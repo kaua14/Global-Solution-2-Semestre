@@ -9,6 +9,8 @@ namespace Global_Solution.Models
 
         public string TipoConsulta { get; set; }
 
-        
+        public string NomeConsulta { get; set; }
+
+      
     }
 }
