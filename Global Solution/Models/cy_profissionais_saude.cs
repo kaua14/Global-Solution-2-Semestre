@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Global_Solution.Models
 {
@@ -6,6 +7,10 @@ namespace Global_Solution.Models
     {
         [Key]
         public int IdProfissional { get; set; }
+
+        public virtual ICollection<cy_usuarios> IdUsuario { get; set; }
+
+
         [Range(0,100)]
         public string especialidade { get; set; }
 

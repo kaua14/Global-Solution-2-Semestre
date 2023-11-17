@@ -7,6 +7,8 @@ namespace Global_Solution.Models
         [Key]
         public int IdEspecialidade { get; set; }
 
+
+
         [Range(0,100)]
         public string nomeEspecialidade { get; set; }
     }

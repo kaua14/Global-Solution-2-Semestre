@@ -7,6 +7,11 @@ namespace Global_Solution.Models
         [Key]
         public int IdConsulta { get; set; }
 
+        public int IdPaciente { get; set; }
+
+        public virtual ICollection<cy_profissionais_saude> IdProfissional { get; set; }
+
+
         public DateTime? dataConsulta { get; set; }
 
         [Range(0, 255)]
