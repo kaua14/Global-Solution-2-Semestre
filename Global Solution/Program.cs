@@ -1,9 +1,26 @@
+using Global_Solution.Models;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
+builder.Services.AddControllers();
+
+builder.Services.AddEndpointsApiExplorer();
+
+
+builder.Services.AddDbContext<OracleDBContext>(options =>
+{
+    options.UseOracle(builder.Configuration.GetConnectionString("OracleConnection"));
+});
+
 var app = builder.Build();
+
+
+
+
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
