@@ -3,6 +3,7 @@ using System;
 using Global_Solution.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Oracle.EntityFrameworkCore.Metadata;
 
@@ -11,9 +12,11 @@ using Oracle.EntityFrameworkCore.Metadata;
 namespace Global_Solution.Migrations
 {
     [DbContext(typeof(OracleDBContext))]
-    partial class OracleDBContextModelSnapshot : ModelSnapshot
+    [Migration("20231117133041_Initial01")]
+    partial class Initial01
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -292,7 +295,8 @@ namespace Global_Solution.Migrations
 
                     OraclePropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("IdUsuario"));
 
-
+                    b.Property<int?>("cy_profissionais_saudeIdProfissional")
+                        .HasColumnType("NUMBER(10)");
 
                     b.Property<DateTime?>("dataNascimento")
                         .HasColumnType("TIMESTAMP(7)");
@@ -314,8 +318,22 @@ namespace Global_Solution.Migrations
 
                     b.HasKey("IdUsuario");
 
+                    b.HasIndex("cy_profissionais_saudeIdProfissional");
 
+                    b.ToTable("cy_Usuarios");
+                });
 
+            modelBuilder.Entity("Global_Solution.Models.cy_usuarios", b =>
+                {
+                    b.HasOne("Global_Solution.Models.cy_profissionais_saude", null)
+                        .WithMany("IdUsuario")
+                        .HasForeignKey("cy_profissionais_saudeIdProfissional");
+                });
+
+            modelBuilder.Entity("Global_Solution.Models.cy_profissionais_saude", b =>
+                {
+                    b.Navigation("IdUsuario");
+                });
 #pragma warning restore 612, 618
         }
     }

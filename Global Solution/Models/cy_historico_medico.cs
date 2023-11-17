@@ -7,6 +7,8 @@ namespace Global_Solution.Models
         [Key]
         public int IdHistorico { get; set; }
 
+
+
         public DateTime? dataEvento { get; set; }
 
         [Range(0, 255)]

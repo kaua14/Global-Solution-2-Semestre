@@ -7,6 +7,8 @@ namespace Global_Solution.Models
         [Key]
         public int IdHospital { get; set; }
 
+        public virtual ICollection<cy_consulta_medica> IdPaciente { get; set; }
+
         [Range(0, 100)]
         public string nomeHospital { get; set; }
 

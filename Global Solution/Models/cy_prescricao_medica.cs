@@ -7,6 +7,8 @@ namespace Global_Solution.Models
         [Key]
         public int IdPrescricao { get; set; }
 
+        public virtual ICollection<cy_consulta_medica> IdConsulta { get; set; }
+
         [Range(0, 100)]
         public string Medicamento { get; set; }
 
