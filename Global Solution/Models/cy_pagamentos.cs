@@ -7,7 +7,8 @@ namespace Global_Solution.Models
         [Key]
         public int IdPagamento { get; set; }
 
-      
+        public virtual ICollection<cy_consulta_medica> IdConsulta { get; set; }
+
         public float valor { get; set; }
 
         public DateTime dataPagamento { get; set; }

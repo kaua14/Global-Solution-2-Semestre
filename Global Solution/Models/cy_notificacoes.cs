@@ -7,6 +7,8 @@ namespace Global_Solution.Models
         [Key]
         public int IdNotificacao { get; set; }
 
+        public int IdDestinatario { get; set; }
+
         [Range(0, 255)]
         public string mensagem { get; set; }
 

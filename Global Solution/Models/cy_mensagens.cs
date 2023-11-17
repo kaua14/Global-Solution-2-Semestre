@@ -7,6 +7,8 @@ namespace Global_Solution.Models
         [Key]
         public int idMensagem { get; set; }
 
+        public virtual ICollection<cy_consulta_medica> IdConsulta { get; set; }
+
         public int Remetente { get; set; }
 
         public int Destinatario { get; set; }

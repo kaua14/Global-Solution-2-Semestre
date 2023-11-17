@@ -9,6 +9,8 @@ namespace Global_Solution.Models
 
         public virtual ICollection<cy_consulta_medica> IdConsulta { get; set; }
 
+        public virtual ICollection<cy_consulta_medica> IdPaciente { get; set; }
+
         [Range(0, 255)]
         public string comentario { get; set; }
 
