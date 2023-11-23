@@ -154,6 +154,31 @@ namespace Global_Solution.Controllers
             return RedirectToAction(nameof(Index));
         }
 
+        public async Task<IActionResult> Search(string searchString)
+        {
+            var consultas = from c in _context.cy_ConsultaMedica
+                            select c;
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                consultas = consultas.Where(c => c.descricao.Contains(searchString));
+            }
+
+            return View(await consultas.ToListAsync());
+        }
+
+        public async Task<IActionResult> Dashboard()
+        {
+            // Lógica para obter dados para o dashboard
+            var totalConsultas = await _context.cy_ConsultaMedica.CountAsync();
+            var consultasConcluidas = await _context.cy_ConsultaMedica.CountAsync(c => c.status == "Concluída");
+
+            ViewBag.TotalConsultas = totalConsultas;
+            ViewBag.ConsultasConcluidas = consultasConcluidas;
+
+            return View();
+        }
+
         private bool cy_consulta_medicaExists(int id)
         {
           return (_context.cy_ConsultaMedica?.Any(e => e.IdConsulta == id)).GetValueOrDefault();
